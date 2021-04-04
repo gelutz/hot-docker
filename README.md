@@ -13,6 +13,8 @@ make up
 
 ### Dependências:
 
+- Docker
+
 ### Comentários do autor:
 
 <h3>
