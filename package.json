@@ -1,17 +1,13 @@
 {
-  "name": "ts-hot-reload",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "scripts": {
-    "start": "docker-compose up -d",
-    "debug:server": "npm run debug -C server",
-    "debug:client": "npm run debug -C client",
-    "start:server": "npm run start -C server",
-    "postinstall": "npm install -C client && npm install -C server"
-  },
-  "dependencies": {
-    "tslib": "^2.1.0"
-  },
-  "devDependencies": {}
+    "scripts": {
+        "debug": "tsc-watch --onSuccess \"node --inspect=0.0.0.0:9229 dist/server.js\" --onFailure \"echo WHOOPS! Server compilation failed\"",
+        "start": "tsc -p . && node dist/server.js"
+    },
+    "devDependencies": {
+        "tsc-watch": "^4.0",
+        "typescript": "^4.2.3"
+    },
+    "dependencies": {
+        "express": "^4.17.1"
+    }
 }
