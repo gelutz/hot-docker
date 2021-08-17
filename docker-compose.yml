@@ -4,11 +4,11 @@ services:
     build:
       context: .
       target: development
-    command: ["npm", "run", "debug:server"]
+    command: ["npm", "run", "dev"]
     container_name: server
     ports:
       - "${SERVER_PORT}:${SERVER_PORT}"
       # essa porta é do serviço de debug do node (see package.json)
       - "${DEBUG_PORT}:${DEBUG_PORT}"
     volumes:
-      - "./server/src:/usr/app/server/src"
+      - "./src:/usr/app/src"

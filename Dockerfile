@@ -5,14 +5,13 @@ WORKDIR /usr/app
 #---------- PRE-REQS ----------
 FROM base as production
 
-COPY package*.json ./
-COPY server/package.json server/ts*.json server/
+COPY . .
 
-RUN npm install --quiet --unsafe-perm --no-progress --no-audit --only=production
+RUN yarn --prod --no-lockfile
 EXPOSE 3333
 
 #---------- DEVELOPMENT ----------
 FROM production as development
-RUN npm install --quiet --unsafe-perm --no-progress --no-audit --only=development
 
+RUN yarn
 EXPOSE 9229
