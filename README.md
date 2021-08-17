@@ -1,29 +1,39 @@
-# Typescript + docker with hot-reload
+<center>
+<h1>Typescript + docker with hot-reload</h1>
+<h3>Boilerplate code for a nodejs project, with typescript</h3>
+</center>
 
-### Comandos:
+## Starting service:
+### This command builds and starts the container on detached mode.
+`make up`
 
-> Esse script levanta um container que instala todos os pacotes de
-> server/ e client/
+or run
 
-```bash
-git clone https://github.com/gelutz/hot-ts hot-ts
-cd hot-ts
-make up
+`docker-compose up -d --build`
+
+Remove `-d` flag to see what the service is outputting.
+
+# Dependencies
+
+`npm` is necessary (as far as I know) because of the --only flag inside Dockerfile, which is not supported by `yarn`:
+
+```Dockerfile
+# ...
+FROM production as development
+RUN npm install ... --only=production
+# ...
 ```
 
-### Dependências:
+This flag allows me to divide the Docker build process in different steps 
+separating development and production.
 
-- Docker
+The build target is defined inside the `docker-compose.yml` file:
 
-### Comentários do autor:
-
-<h3>
-Estou usando `npm` por que ele possui a flag --only, por exemplo:
-<p>./Dockerfile:</p>
-<p>`RUN npm install ... --only=production`</p>
-</h3>
-Dessa forma, consigo dividir o Dockerfile em mais etapas.
-A etapa desejada é especificada na flag _target: development_, no docker-compose.yml
+```yml
+server:
+    # ...
+      target: development
+```
 
 ---
 
