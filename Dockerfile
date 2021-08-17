@@ -14,4 +14,3 @@ EXPOSE 3333
 FROM production as development
 
 RUN yarn
-EXPOSE 9229

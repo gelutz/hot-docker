@@ -8,7 +8,5 @@ services:
     container_name: server
     ports:
       - "${SERVER_PORT}:${SERVER_PORT}"
-      # essa porta é do serviço de debug do node (see package.json)
-      - "${DEBUG_PORT}:${DEBUG_PORT}"
     volumes:
       - "./src:/usr/app/src"
