@@ -12,6 +12,7 @@ or run
 `docker-compose up -d --build`
 
 Remove `-d` flag to see what the service is outputting.
+
 ---
 
 Author: [gelutz](https://github.com/gelutz)
